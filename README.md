@@ -1,4 +1,4 @@
-# RoadEye / RoadSense
+# RoadEye
 
 RoadEye is a real-time road-video intelligence system for detecting vehicles, estimating lane context, spotting near-miss situations, and preserving evidence. It combines computer vision, IPFS storage, and a Solana smart contract so the most severe incidents are not only saved as clips but also recorded on-chain.
 
@@ -162,17 +162,3 @@ The Anchor program lives in `contracts/near_miss_registry`. Use the usual Anchor
 - The backend is designed to run in Docker on Hugging Face Spaces.
 - The Streamlit frontend can be deployed separately on Streamlit Community Cloud.
 - Production secrets should be stored in the host platform's secret manager instead of `.env` files.
-
-## Contributors
-
-| Name        | Roll No |
-| ----------- | ------- |
-| Om Chillure | A3-45   |
-| Adnan Dalal | A3-42   |
-| Sakshi Mude | A3-48   |
-
-Guide: Prof. V. R. Gupta
-
-Course: ECSP6003-1 Deep Learning Lab, Sem VI B.Tech ECS
-
-College: RCOEM, Nagpur
