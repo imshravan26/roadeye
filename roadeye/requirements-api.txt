@@ -11,3 +11,4 @@ solana
 solders
 python-dotenv
 imageio-ffmpeg
+flask-cors

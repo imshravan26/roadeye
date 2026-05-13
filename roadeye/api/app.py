@@ -3,6 +3,7 @@ import sys
 import subprocess
 import tempfile
 import uuid
+from flask_cors import CORS
 
 from dotenv import load_dotenv
 
@@ -65,7 +66,7 @@ job_clips: dict[str, list] = {}
 recorded_incidents: list = []
 model = None
 model_lock = threading.Lock()
-
+CORS(app)
 
 def get_model():
     global model
