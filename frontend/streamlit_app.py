@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BACKEND_URL = "https://omchillure-dlproj.hf.space"
+BACKEND_URL = "https://galactic26-roadeye.hf.space"
 
 st.set_page_config(
     page_title="RoadEye - Live Detection",
