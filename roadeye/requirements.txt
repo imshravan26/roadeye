@@ -1,0 +1,11 @@
+ultralytics
+opencv-python-headless
+flask
+streamlit
+requests
+numpy
+anchorpy
+solana
+solders
+python-dotenv
+imageio-ffmpeg

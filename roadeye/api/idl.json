@@ -1,0 +1,260 @@
+{
+  "version": "0.1.0",
+  "name": "near_miss_registry",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "registry",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "system_program",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "record_incident",
+      "accounts": [
+        {
+          "name": "registry",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "incident",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reporter",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "system_program",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "input",
+          "type": {
+            "defined": "IncidentInput"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Registry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "next_incident_id",
+            "type": "u64"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Incident",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "occurred_at",
+            "type": "u64"
+          },
+          {
+            "name": "camera_id_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "vehicle_class",
+            "type": "string"
+          },
+          {
+            "name": "distance_cm",
+            "type": "u32"
+          },
+          {
+            "name": "ttc_ms",
+            "type": "u32"
+          },
+          {
+            "name": "severity_score",
+            "type": "u8"
+          },
+          {
+            "name": "severity_label",
+            "type": "string"
+          },
+          {
+            "name": "alert_flag",
+            "type": "bool"
+          },
+          {
+            "name": "clip_cid",
+            "type": "string"
+          },
+          {
+            "name": "reporter",
+            "type": "publicKey"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "IncidentInput",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "occurred_at",
+            "type": "u64"
+          },
+          {
+            "name": "camera_id_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "vehicle_class",
+            "type": "string"
+          },
+          {
+            "name": "distance_cm",
+            "type": "u32"
+          },
+          {
+            "name": "ttc_ms",
+            "type": "u32"
+          },
+          {
+            "name": "severity_score",
+            "type": "u8"
+          },
+          {
+            "name": "severity_label",
+            "type": "string"
+          },
+          {
+            "name": "alert_flag",
+            "type": "bool"
+          },
+          {
+            "name": "clip_cid",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "IncidentRecorded",
+      "fields": [
+        {
+          "name": "incident_id",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "occurred_at",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "camera_id_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          },
+          "index": false
+        },
+        {
+          "name": "vehicle_class",
+          "type": "string",
+          "index": false
+        },
+        {
+          "name": "severity_score",
+          "type": "u8",
+          "index": false
+        },
+        {
+          "name": "alert_flag",
+          "type": "bool",
+          "index": false
+        },
+        {
+          "name": "clip_cid",
+          "type": "string",
+          "index": false
+        },
+        {
+          "name": "reporter",
+          "type": "publicKey",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidTimestamp",
+      "msg": "Timestamp must be greater than zero"
+    },
+    {
+      "code": 6001,
+      "name": "VehicleClassRequired",
+      "msg": "Vehicle class is required"
+    },
+    {
+      "code": 6002,
+      "name": "ClipCidRequired",
+      "msg": "Clip CID is required"
+    },
+    {
+      "code": 6003,
+      "name": "ScoreOutOfRange",
+      "msg": "Severity score must be between 0 and 100"
+    }
+  ]
+}
