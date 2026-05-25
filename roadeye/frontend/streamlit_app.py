@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BACKEND_URL = "https://omchillure-dlproj.hf.space"
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:5000").rstrip("/")
 
 st.set_page_config(
     page_title="RoadEye - Live Detection",
